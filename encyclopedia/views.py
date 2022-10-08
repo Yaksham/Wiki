@@ -9,8 +9,16 @@ def index(request):
     })
 
 def entry(request, name):
+    # name = name.capitalize()
     page = util.get_entry(name)
     if page != None:
         markdowner = Markdown()
-        return render(request, )
-
+        return render(request, "encyclopedia/entry.html", {
+            "content": markdowner.convert(page),
+            "name": name
+        })
+    else:
+        return render(request, "encyclopedia/entry.html", {
+            "content": "<h1>Page does not exist.</h1>",
+            "name": "Error"
+        })
