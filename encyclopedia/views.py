@@ -28,11 +28,8 @@ def search(request):
     if page is not None:
         return redirect("entry", name=query)
     else:
-        matches = []
         entries = util.list_entries()
-        for entry in entries:
-            if query.lower() in entry.lower():
-                matches.append(entry)
+        matches = [e for e in entries if query.lower() in e.lower()]
         if not matches:
             heading = "<h2>No reuslts found.</h2>"
         else:
@@ -41,4 +38,13 @@ def search(request):
             "list": matches,
             "heading": heading
         })
+
+def new(request):
+    if request.method == 'GET':
+        return render(request, "encyclopedia/new.html")
+    title = request.POST.get("title")
+    entries = util.list_entries()
+    if title not in entries:
+        util.save_entry(title, request.POST.get("data"))
+        return redirect("entry", name=title)
 
