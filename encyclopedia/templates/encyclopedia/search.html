@@ -1,0 +1,12 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Title
+{% endblock %}
+
+{% block body %}
+    {{ heading|safe }}
+    {% for item in list %}
+        <li><a href="/wiki/{{ item }}">{{ item }}</a></li>
+    {% endfor %}
+{% endblock %}
