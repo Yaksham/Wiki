@@ -9,7 +9,10 @@ def index(request):
     })
 
 def entry(request, name):
-    page = util.get_entry(name)
+    if request.method == 'POST':
+        page = util.get_entry(request.POST.get("q"))
+    else:
+        page = util.get_entry(name)
     if page != None:
         markdowner = Markdown()
         content = markdowner.convert(page)
