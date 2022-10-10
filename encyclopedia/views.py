@@ -34,7 +34,7 @@ def search(request):
         if not matches:
             heading = "<h2>No reuslts found.</h2>"
         else:
-            heading = "<h2>Did you mean:</h2>"
+            heading = "<h3>Did you mean:</h3>"
         return render(request, "encyclopedia/search.html", {
             "list": matches,
             "heading": heading

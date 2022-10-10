@@ -8,8 +8,8 @@
     {% if form %}
         <form action="{% url 'new' %}" method="post">
             {% csrf_token %}
-            <input type="text" name="title" placeholder="Enter title">
-            <textarea name="data" rows="5" cols="10" placeholder="Enter markdown content"></textarea>
+            <input type="text" name="title" placeholder="Enter title" id="foo"> <br>
+            <textarea name="data" rows="10" placeholder="Enter markdown content"></textarea> <br>
             <input type="submit" value="Save">
         </form>
     {% else %}

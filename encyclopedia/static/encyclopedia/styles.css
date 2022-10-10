@@ -7,13 +7,13 @@ code {
     white-space: pre;
 }
 
-h1 {
+#heading {
     margin-top: 0px;
     padding-top: 20px;
 }
 
 textarea {
-    height: 90vh;
+    height: auto;
     width: 80%;
 }
 
@@ -36,3 +36,7 @@ textarea {
 .sidebar h2 {
     margin-top: 5px;
 }
+
+#foo {
+    margin-bottom: 10px;
+} 
