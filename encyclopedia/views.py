@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from markdown2 import Markdown
 from django.shortcuts import redirect
+from markdown2 import Markdown
+from random import choice
 from . import util
 
 
@@ -68,3 +69,6 @@ def edit(request, name):
     return redirect("entry", name=name)
     
 
+def random_entry(request):
+    entries = util.list_entries()
+    return redirect("entry", name=choice(entries))
