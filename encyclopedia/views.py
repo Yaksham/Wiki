@@ -57,3 +57,14 @@ def new(request):
             "title": title
         })
 
+def edit(request, name):
+    if request.method == 'GET':
+        data = util.get_entry(name)
+        return render(request, "encyclopedia/edit.html", {
+            "data": data,
+            "title": name
+        })
+    util.save_entry(name, request.POST.get("data"))
+    return redirect("entry", name=name)
+    
+
