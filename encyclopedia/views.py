@@ -41,10 +41,19 @@ def search(request):
 
 def new(request):
     if request.method == 'GET':
-        return render(request, "encyclopedia/new.html")
+        form = True
+        return render(request, "encyclopedia/new.html", {
+            "form": form
+        })
     title = request.POST.get("title")
     entries = util.list_entries()
     if title not in entries:
         util.save_entry(title, request.POST.get("data"))
         return redirect("entry", name=title)
+    else:
+        form = False
+        return render(request, "encyclopedia/new.html", {
+            "form": form,
+            "title": title
+        })
 

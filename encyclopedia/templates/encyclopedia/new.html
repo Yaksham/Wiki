@@ -5,10 +5,14 @@
 {% endblock %}
 
 {% block body %}
-    <form action="{% url 'new' %}" method="post">
-        {% csrf_token %}
-        <input type="text" name="title" placeholder="Enter title">
-        <textarea name="data" rows="5" cols="10" placeholder="Enter markdown content"></textarea>
-        <input type="submit" value="Save">
-    </form>
+    {% if form %}
+        <form action="{% url 'new' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="title" placeholder="Enter title">
+            <textarea name="data" rows="5" cols="10" placeholder="Enter markdown content"></textarea>
+            <input type="submit" value="Save">
+        </form>
+    {% else %}
+        <h2>Entry titled '{{ title }}' already exists.</h2>
+    {% endif %}
 {% endblock %}
